@@ -12,7 +12,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        read_only = ("id",)
+        read_only_fields = ("id",)
         fields = ("id", "username", "first_name", "last_name", "email", "password", "password_repeat")
 
     def validate(self, attrs: dict):
@@ -43,7 +43,7 @@ class LoginSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        read_only = ("id",)
+        read_only_fields = ("id",)
         fields = ("id", "username", "first_name", "last_name", "email",)
 
 
@@ -53,7 +53,7 @@ class UpdatePasswordSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        read_only = ("id",)
+        read_only_fields = ("id",)
         fields = ("old_password", "new_password")
 
     def validate(self, attrs):

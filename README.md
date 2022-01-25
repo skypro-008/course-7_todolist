@@ -39,3 +39,15 @@ Social auth:
 - Настроить перенаправления https://python-social-auth.readthedocs.io/en/latest/configuration/settings.html?highlight=success#urls-options
 - https://python-social-auth.readthedocs.io/en/latest/configuration/django.html#exceptions-middleware
 - SocialAuthExceptionMiddleware (убрать debug)
+
+Bot:
+- сделать приложение бота 
+- сделать модель
+- установить requests, dc
+- описать класс для запросов в тг
+- описать dc
+- сделать management команду для получения уведомлений
+- реализовать логику, чтобы бот понимал подтвержденного пользователя и нет
+- в случае неподтвержденного отправить код подтверждения
+- метод api для подтверждения 
+- логика отправки текущих целей

@@ -46,7 +46,8 @@ INSTALLED_APPS = [
 ]
 APPS = [
     'core',
-    'goals'
+    'goals',
+    'bot',
 ]
 INSTALLED_APPS += APPS
 
@@ -153,3 +154,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+BOT_TOKEN = env("BOT_TOKEN")
