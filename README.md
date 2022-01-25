@@ -16,3 +16,17 @@
 - добавить urls в core
 - написать Serializer для пользователя
 - написать view
+
+Вход:
+- разобраться с auth backends
+- реализовать login
+
+Профиль:
+- класс RetrieveUpdateDestroyAPIView
+- get текущий профиль
+- post обновить 
+- delete логаут 
+
+Обновить пароль:
+- стандартные django валидаторы пароля
+- UpdateAPIView
