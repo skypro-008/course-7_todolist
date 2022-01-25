@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 ]
 APPS = [
     'core',
+    'goals'
 ]
 INSTALLED_APPS += APPS
 
