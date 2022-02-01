@@ -10,9 +10,7 @@ from bot.tg.client import TgClient
 
 class VerificationView(GenericAPIView):
     model = TgUser
-    permission_classes = [
-        permissions.IsAuthenticated
-    ]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = TgUserSerializer
 
     def patch(self, request, *args, **kwargs):

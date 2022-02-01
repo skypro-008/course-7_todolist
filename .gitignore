@@ -113,3 +113,5 @@ media
 /static
 celerybeat.pid
 .envlocal
+app.db
+postgres-data

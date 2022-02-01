@@ -15,18 +15,48 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='TgUser',
+            name="TgUser",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tg_id', models.BigIntegerField(unique=True, verbose_name='tg id')),
-                ('tg_chat_id', models.BigIntegerField(verbose_name='tg chat id')),
-                ('username', models.CharField(blank=True, default=None, max_length=512, null=True, verbose_name='tg username')),
-                ('verification_code', models.CharField(max_length=32, verbose_name='код подтверждения')),
-                ('user', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL, verbose_name='связанный пользователь')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("tg_id", models.BigIntegerField(unique=True, verbose_name="tg id")),
+                ("tg_chat_id", models.BigIntegerField(verbose_name="tg chat id")),
+                (
+                    "username",
+                    models.CharField(
+                        blank=True,
+                        default=None,
+                        max_length=512,
+                        null=True,
+                        verbose_name="tg username",
+                    ),
+                ),
+                (
+                    "verification_code",
+                    models.CharField(max_length=32, verbose_name="код подтверждения"),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        blank=True,
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="связанный пользователь",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'tg пользователь',
-                'verbose_name_plural': 'tg пользователи',
+                "verbose_name": "tg пользователь",
+                "verbose_name_plural": "tg пользователи",
             },
         ),
     ]

@@ -1,17 +1,25 @@
 from django.contrib.auth import login, logout
 from rest_framework import permissions
-from rest_framework.generics import CreateAPIView, GenericAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
+from rest_framework.generics import (
+    CreateAPIView,
+    GenericAPIView,
+    RetrieveUpdateDestroyAPIView,
+    UpdateAPIView,
+)
 from rest_framework.response import Response
 
 from core.models import User
-from core.serializers import CreateUserSerializer, LoginSerializer, UserSerializer, UpdatePasswordSerializer
+from core.serializers import (
+    CreateUserSerializer,
+    LoginSerializer,
+    UserSerializer,
+    UpdatePasswordSerializer,
+)
 
 
 class SignupView(CreateAPIView):
     model = User
-    permission_classes = [
-        permissions.AllowAny
-    ]
+    permission_classes = [permissions.AllowAny]
     serializer_class = CreateUserSerializer
 
 
@@ -29,9 +37,7 @@ class LoginView(GenericAPIView):
 
 class ProfileView(RetrieveUpdateDestroyAPIView):
     model = User
-    permission_classes = [
-        permissions.IsAuthenticated
-    ]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserSerializer
 
     def get_object(self):
@@ -44,9 +50,7 @@ class ProfileView(RetrieveUpdateDestroyAPIView):
 
 class UpdatePasswordView(UpdateAPIView):
     model = User
-    permission_classes = [
-        permissions.IsAuthenticated
-    ]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = UpdatePasswordSerializer
 
     def get_object(self):

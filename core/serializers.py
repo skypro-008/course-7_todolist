@@ -13,7 +13,15 @@ class CreateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         read_only_fields = ("id",)
-        fields = ("id", "username", "first_name", "last_name", "email", "password", "password_repeat")
+        fields = (
+            "id",
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "password",
+            "password_repeat",
+        )
 
     def validate(self, attrs: dict):
         password: str = attrs.get("password")
@@ -31,11 +39,11 @@ class LoginSerializer(serializers.Serializer):
     password = serializers.CharField(write_only=True)
 
     def validate(self, attrs: dict):
-        username = attrs.get('username')
-        password = attrs.get('password')
+        username = attrs.get("username")
+        password = attrs.get("password")
         user = authenticate(username=username, password=password)
         if not user:
-            raise ValidationError('username or password is incorrect')
+            raise ValidationError("username or password is incorrect")
         attrs["user"] = user
         return attrs
 
@@ -44,12 +52,20 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         read_only_fields = ("id",)
-        fields = ("id", "username", "first_name", "last_name", "email",)
+        fields = (
+            "id",
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+        )
 
 
 class UpdatePasswordSerializer(serializers.ModelSerializer):
     old_password = serializers.CharField(write_only=True)
-    new_password = serializers.CharField(write_only=True, validators=[validate_password])
+    new_password = serializers.CharField(
+        write_only=True, validators=[validate_password]
+    )
 
     class Meta:
         model = User

@@ -8,7 +8,7 @@ from goals.models import Goal
 
 
 class Command(BaseCommand):
-    help = 'run bot'
+    help = "run bot"
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -17,7 +17,9 @@ class Command(BaseCommand):
     def handle_user_without_verification(self, msg: Message, tg_user: TgUser):
         tg_user.set_verification_code()
         tg_user.save(update_fields=["verification_code"])
-        self.tg_client.send_message(msg.chat.id, f"[verification code] {tg_user.verification_code}")
+        self.tg_client.send_message(
+            msg.chat.id, f"[verification code] {tg_user.verification_code}"
+        )
 
     def fetch_tasks(self, msg: Message, tg_user: TgUser):
         gls = Goal.objects.filter(user=tg_user.user)
@@ -41,7 +43,7 @@ class Command(BaseCommand):
             defaults={
                 "tg_chat_id": msg.chat.id,
                 "username": msg.from_.username,
-            }
+            },
         )
         if created:
             self.tg_client.send_message(msg.chat.id, "[greeting]")
