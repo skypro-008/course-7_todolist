@@ -28,7 +28,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
         password_repeat: str = attrs.pop("password_repeat", None)
         if password != password_repeat:
             raise ValidationError("password and password_repeat is not equal")
-        return res
+        return attrs
 
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
