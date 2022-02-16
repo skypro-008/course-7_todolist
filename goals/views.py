@@ -7,13 +7,13 @@ from django_filters.rest_framework import DjangoFilterBackend
 from goals.filters import GoalDateFilter
 from goals.models import GoalCategory, Goal, GoalComment
 from goals.serializers import GoalCreateSerializer, GoalCategorySerializer, GoalSerializer, CommentCreateSerializer, \
-    CommentSerializer
+    CommentSerializer, GoalCategoryCreateSerializer
 
 
 class GoalCategoryCreateView(CreateAPIView):
     model = GoalCategory
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = GoalCreateSerializer
+    serializer_class = GoalCategoryCreateSerializer
 
 
 class GoalCategoryListView(ListAPIView):
