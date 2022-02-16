@@ -9,27 +9,90 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('goals', '0001_initial'),
+        ("goals", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Goal',
+            name="Goal",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateTimeField(verbose_name='Дата создания')),
-                ('updated', models.DateTimeField(verbose_name='Дата последнего обновления')),
-                ('title', models.CharField(max_length=255, verbose_name='Заголовок')),
-                ('description', models.TextField(blank=True, default=None, null=True, verbose_name='Описание')),
-                ('due_date', models.DateField(blank=True, default=None, null=True, verbose_name='Дата выполнения')),
-                ('status', models.PositiveSmallIntegerField(choices=[(1, 'To do'), (2, 'In progress'), (3, 'Done'), (4, 'Archived')], default=1, verbose_name='Статус')),
-                ('priority', models.PositiveSmallIntegerField(choices=[(1, 'Low'), (2, 'Medium'), (3, 'High'), (4, 'Critical')], default=2, verbose_name='Приоритет')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='goals.goalcategory', verbose_name='Категория')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='goals', to=settings.AUTH_USER_MODEL, verbose_name='Пользователь')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created", models.DateTimeField(verbose_name="Дата создания")),
+                (
+                    "updated",
+                    models.DateTimeField(verbose_name="Дата последнего обновления"),
+                ),
+                ("title", models.CharField(max_length=255, verbose_name="Заголовок")),
+                (
+                    "description",
+                    models.TextField(
+                        blank=True, default=None, null=True, verbose_name="Описание"
+                    ),
+                ),
+                (
+                    "due_date",
+                    models.DateField(
+                        blank=True,
+                        default=None,
+                        null=True,
+                        verbose_name="Дата выполнения",
+                    ),
+                ),
+                (
+                    "status",
+                    models.PositiveSmallIntegerField(
+                        choices=[
+                            (1, "To do"),
+                            (2, "In progress"),
+                            (3, "Done"),
+                            (4, "Archived"),
+                        ],
+                        default=1,
+                        verbose_name="Статус",
+                    ),
+                ),
+                (
+                    "priority",
+                    models.PositiveSmallIntegerField(
+                        choices=[
+                            (1, "Low"),
+                            (2, "Medium"),
+                            (3, "High"),
+                            (4, "Critical"),
+                        ],
+                        default=2,
+                        verbose_name="Приоритет",
+                    ),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="goals.goalcategory",
+                        verbose_name="Категория",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="goals",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Пользователь",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Цель',
-                'verbose_name_plural': 'Цели',
+                "verbose_name": "Цель",
+                "verbose_name_plural": "Цели",
             },
         ),
     ]
