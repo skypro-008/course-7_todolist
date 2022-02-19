@@ -25,7 +25,7 @@ class GoalCategoryListView(ListAPIView):
         filters.OrderingFilter,
         filters.SearchFilter,
     ]
-    ordering_fields = ["title", "date_created"]
+    ordering_fields = ["title", "created"]
     ordering = ["title"]
     search_fields = ["title"]
 
