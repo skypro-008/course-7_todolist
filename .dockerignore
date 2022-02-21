@@ -6,3 +6,7 @@ docker-compose.yaml
 app.db
 .env
 postgres-data
+front
+.docker_env
+.docker_ci_env
+.github
