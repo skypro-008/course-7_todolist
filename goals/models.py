@@ -65,7 +65,6 @@ class GoalCategory(DatesModelMixin):
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
-        unique_together = ("title", "board")
 
     board = models.ForeignKey(
         Board, verbose_name="Доска", on_delete=models.PROTECT, related_name="categories"
@@ -74,9 +73,6 @@ class GoalCategory(DatesModelMixin):
     user = models.ForeignKey(User, verbose_name="Автор", on_delete=models.PROTECT)
     is_deleted = models.BooleanField(verbose_name="Удалена", default=False)
 
-    def __str__(self):
-        return self.title
-
 
 class Goal(DatesModelMixin):
     class Meta:
@@ -84,17 +80,16 @@ class Goal(DatesModelMixin):
         verbose_name_plural = "Цели"
 
     class Status(models.IntegerChoices):
-        to_do = 1, "To do"
-        in_progress = 2, "In progress"
-        done = 3, "Done"
-        archived = 4, "Archived"
-        overdue = 5, "Overdue"
+        to_do = 1, "К выполнению"
+        in_progress = 2, "В процессе"
+        done = 3, "Выполнено"
+        archived = 4, "Архив"
 
     class Priority(models.IntegerChoices):
-        low = 1
-        medium = 2
-        high = 3
-        critical = 4
+        low = 1, "Низкий"
+        medium = 2, "Средний"
+        high = 3, "Высокий"
+        critical = 4, "Критический"
 
     user = models.ForeignKey(
         User,
