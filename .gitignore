@@ -112,3 +112,4 @@ media
 .vscode
 /static
 celerybeat.pid
+.envlocal
