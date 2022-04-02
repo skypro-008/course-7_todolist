@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   front:
-    image: sermalenk/skypro-front:version_1
+    image: sermalenk/skypro-front:version_1_1
     ports:
       - 8080:80
     depends_on:
