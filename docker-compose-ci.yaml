@@ -4,44 +4,40 @@ services:
   front:
     image: sermalenk/skypro-front:lesson-38
     ports:
-      - 8080:80
+      - 8038:80
     depends_on:
       - api
   api:
-    build:
-      context: .
+    image: sermalenk/django-app:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     depends_on:
       postgres:
         condition: service_healthy
       migrations:
         condition: service_completed_successfully
     volumes:
-      - ./.docker_env:/app/.env
+      - ./.env:/app/.env
   bot:
-    build:
-      context: .
+    image: sermalenk/django-app:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     depends_on:
       postgres:
         condition: service_healthy
-      migrations:
-        condition: service_completed_successfully
     volumes:
-      - ./.docker_env:/app/.env
+      - ./.env:/app/.env
     command: python manage.py runbot
   migrations:
-    build:
-      context: .
+    image: sermalenk/django-app:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     depends_on:
       postgres:
         condition: service_healthy
     volumes:
-      - ./.docker_env:/app/.env
+      - ./.env:/app/.env
     command: python manage.py migrate
   postgres:
     image: postgres:latest
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: todolist
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_DB: $DB_NAME
+      POSTGRES_USER: $DB_USER
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
