@@ -147,4 +147,4 @@ STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 BOT_TOKEN = env("BOT_TOKEN")
-CSRF_TRUSTED_ORIGINS = ['http://skypro-flask-app-malenko.ga']
+CSRF_TRUSTED_ORIGINS = ["http://skypro-flask-app-malenko.ga"]
