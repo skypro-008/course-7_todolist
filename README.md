@@ -1,18 +1,12 @@
-Подготовка проекта:
-- создать проект django-admin startproject
-- добавить библиотеки в requirements.txt (django 4)
-- добавить environ https://github.com/joke2k/django-environ
-- добавить psycopg2-binary
-- создать базу данных
+# Запустить
 
-Подготовка модели пользователя:
-- создать приложение core
-- зарегистрировать модель User, добавить в settings AUTH_USER_MODEL
-- создать миграцию пользователя 
-- накатить миграции
+```docker-compose up```
 
-Регистрация:
-- поставить drf
-- добавить urls в core
-- написать Serializer для пользователя
-- написать view
+# PS
+
+В задании не нужно требовать от студентов файлы:
+- .docker_env
+- docker-compose.yaml
+- Dockerfile
+
+Они нужны только для удобного запуска и проверки образца 
