@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "social_django",
 ]
-APPS = ["core", "goals", "drf_yasg"]
+APPS = ["core", "drf_yasg"]
 INSTALLED_APPS += APPS
 
 MIDDLEWARE = [
