@@ -1,13 +1,23 @@
 from rest_framework import permissions
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import (
+    CreateAPIView,
+    ListAPIView,
+    RetrieveUpdateDestroyAPIView,
+)
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 
 from goals.filters import GoalDateFilter
 from goals.models import GoalCategory, Goal, GoalComment
-from goals.serializers import GoalCreateSerializer, GoalCategorySerializer, GoalSerializer, CommentCreateSerializer, \
-    CommentSerializer, GoalCategoryCreateSerializer
+from goals.serializers import (
+    GoalCreateSerializer,
+    GoalCategorySerializer,
+    GoalSerializer,
+    CommentCreateSerializer,
+    CommentSerializer,
+    GoalCategoryCreateSerializer,
+)
 
 
 class GoalCategoryCreateView(CreateAPIView):
@@ -30,9 +40,7 @@ class GoalCategoryListView(ListAPIView):
     search_fields = ["title"]
 
     def get_queryset(self):
-        return GoalCategory.objects.filter(
-            user=self.request.user, is_deleted=False
-        )
+        return GoalCategory.objects.filter(user=self.request.user, is_deleted=False)
 
 
 class GoalCategoryView(RetrieveUpdateDestroyAPIView):

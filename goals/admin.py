@@ -11,4 +11,3 @@ class GoalCategoryAdmin(admin.ModelAdmin):
 admin.site.register(GoalCategory, GoalCategoryAdmin)
 admin.site.register(Goal)
 admin.site.register(GoalComment)
-
