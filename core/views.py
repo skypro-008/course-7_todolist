@@ -1,4 +1,4 @@
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, load_backend
 from rest_framework import permissions
 from rest_framework.generics import (
     CreateAPIView,
@@ -21,6 +21,14 @@ class SignupView(CreateAPIView):
     model = User
     permission_classes = [permissions.AllowAny]
     serializer_class = CreateUserSerializer
+
+    def perform_create(self, serializer):
+        super().perform_create(serializer)
+        login(
+            self.request,
+            user=serializer.user,
+            backend="django.contrib.auth.backends.ModelBackend",
+        )
 
 
 class LoginView(GenericAPIView):
